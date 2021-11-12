@@ -52,21 +52,12 @@
                 <div>
                     <form action="">
                         {% for user in users %}
-                        <div>
-                            <h3>{{user.first_name}}</h3>
-                        </div>
-                        <div class="inlineBlock">
-                            <input type="box" name="" id="" value="">
-                        </div>
-                        <div class="inline">
+                            <h3 class="block">{{user.first_name}}</h3>
+                            <textarea class="inlineBlock" name="" id="" cols="30" rows="3"></textarea>
                             <button type="submit" class="btn btn2 btn-primary">Send</button>
-                        </div>
                         {% endfor %}
                     </form>
                 </div>
-                
-                
-
             </div>
         </div>
     </div>
