@@ -65,3 +65,13 @@ display: flex;
 .btn2{
     box-shadow: 2px 3px black;
 }
+
+
+
+
+.border1{
+    border-bottom: 3px solid black;
+}
+.boxRight{
+    border-left: 3px solid black;
+}
