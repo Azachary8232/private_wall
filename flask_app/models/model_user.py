@@ -8,8 +8,8 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app) 
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') #<--- Add to /model top
+model_db = "private_wall"
 
-model_db = 'private_wall'
 class User:
     def __init__(self,data):
         self.id = data['id']
@@ -59,8 +59,9 @@ class User:
 
     @classmethod
     def create(cls,data):
+        print("!!!!!")
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
-        return connectToMySQL(model_db).query_db(query, data)
+        return connectToMySQL("private_wall").query_db(query, data)
 
 
 

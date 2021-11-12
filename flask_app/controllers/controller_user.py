@@ -14,8 +14,10 @@ def index():
 #     Create User through Registration Form
 @app.route('/register', methods=['POST'])
 def register():
+    print("?????")
     if not User.validate_user(request.form):
         return redirect('/')
+    print("222222")
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     data = {
         "first_name": request.form['first_name'],
@@ -23,6 +25,7 @@ def register():
         "email": request.form['email'],
         "password": pw_hash
     }
+    print("9999999")
     user_id = User.create(data)
     session['user_id'] = user_id
     return redirect('/wall')
