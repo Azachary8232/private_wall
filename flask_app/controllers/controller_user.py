@@ -27,6 +27,8 @@ def register():
     session['user_id'] = user_id
     return redirect('/wall')
 
+
+#     User Login to Wall
 @app.route('/login', methods=['POST'])
 def login():
     if not User.validate_login(request.form):
@@ -44,3 +46,11 @@ def login():
     session['user_id'] = user_in_db.id
     return redirect("/wall")
 
+
+
+
+#   Logout to '/'
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')

@@ -75,6 +75,12 @@ class User:
             return False
         return cls(result[0])
 
+    @classmethod
+    def get_all_users(cls):
+        query = "SELECT * FROM users;"
+        result = connectToMySQL(model_db).query_db(query)
+        return  result
+
 
 
 

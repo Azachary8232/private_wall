@@ -50,24 +50,22 @@
                     <h5>You have sent SAMPLE messages so far</h5>
                 </div>
                 <div>
-                    <form class="flex spaceBetween " action="">
+                    <form action="">
+                        {% for user in users %}
                         <div>
-                            <h3>SAMPLE</h3>
+                            <h3>{{user.first_name}}</h3>
                         </div>
-                        <div>
-                            <input type="text" name="" id="">
+                        <div class="inlineBlock">
+                            <input type="box" name="" id="" value="">
                         </div>
-                        <div>
+                        <div class="inline">
                             <button type="submit" class="btn btn2 btn-primary">Send</button>
                         </div>
-
-
-
-
+                        {% endfor %}
                     </form>
                 </div>
                 
-
+                
 
             </div>
         </div>
