@@ -25,5 +25,22 @@ def register():
     }
     user_id = User.create(data)
     session['user_id'] = user_id
-    return redirect('/')
+    return redirect('/wall')
+
+@app.route('/login', methods=['POST'])
+def login():
+    if not User.validate_login(request.form):
+        return redirect('/')
+    data = { 
+        "email" : request.form["email"] 
+        }
+    user_in_db = User.get_by_email(data)
+    if not user_in_db:
+        flash("Invalid Email/Password", category= "login_email")
+        return redirect("/")
+    if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
+        flash("Invalid Email/Password", category= "login_password")
+        return redirect('/')
+    session['user_id'] = user_in_db.id
+    return redirect("/wall")
 

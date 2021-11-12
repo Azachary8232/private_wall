@@ -77,16 +77,30 @@
             </form>
         </div>
         <div>
-            <form action="" method="post">
+            <form action="/login" method="post">
                 <h1 class="m-5">Login</h1>
                 <div>
                     <label  class="m-3" for="">Email</label>
                     <input type="text" name="email">
                 </div>
+                {% with messages = get_flashed_messages(category_filter= 'login_email') %}    
+                    {% if messages %}                           
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <div>
                     <label class="m-3" for="">Password</label>
                     <input type="text" name="password">
                 </div>
+                {% with messages = get_flashed_messages(category_filter= 'login_password') %}    
+                    {% if messages %}                           
+                        {% for message in messages %}            
+                            <p>{{message}}</p>                 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <div>
                     <button type="submit" class="btn btn2 btn-primary">Login</button> 
                 </div>

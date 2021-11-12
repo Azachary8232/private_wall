@@ -42,6 +42,16 @@ class User:
             is_valid = False  
         return is_valid
 
+    @staticmethod
+    def validate_login(user):
+        is_valid = True 
+        if len(user['email']) < 1: 
+            flash("Please insert valid Email.", category= "login_email")
+            is_valid = False  
+        if len(user['password']) < 1: 
+            flash("Please include a valid Password.", category= "login_password")
+            is_valid = False  
+        return is_valid
 
 
 
@@ -57,7 +67,13 @@ class User:
 
     # ***Retreive***
 
-
+    @classmethod
+    def get_by_email(cls,data):
+        query = "SELECT * FROM users WHERE email = %(email)s;"
+        result = connectToMySQL(model_db).query_db(query,data)
+        if len(result) < 1:
+            return False
+        return cls(result[0])
 
 
 
